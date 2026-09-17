@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard | Practice Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🌤️ Weather Dashboard</h1>
+      <p class="subtitle">Asynchronous REST API Integration & Dynamic DOM Updates</p>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="city-input" placeholder="Enter city name (e.g., Tokyo, London, San Francisco)..." autocomplete="off">
+      <button id="search-btn">Search</button>
+    </div>
+
+    <div class="quick-cities">
+      <span>Quick Select:</span>
+      <button class="chip" data-city="Tokyo">Tokyo</button>
+      <button class="chip" data-city="New York">New York</button>
+      <button class="chip" data-city="London">London</button>
+      <button class="chip" data-city="San Francisco">San Francisco</button>
+    </div>
+
+    <div id="status-message" class="status-banner hidden"></div>
+
+    <main id="weather-display" class="weather-display hidden">
+      <div class="card current-card">
+        <div class="card-header">
+          <div>
+            <h2 id="city-name">City Name</h2>
+            <p id="local-time" class="timestamp">Today</p>
+          </div>
+          <div id="weather-icon" class="weather-icon">☀️</div>
+        </div>
+
+        <div class="card-body">
+          <div class="temp-display">
+            <span id="current-temp" class="temperature">22</span><span class="unit">°C</span>
+          </div>
+          <p id="weather-desc" class="condition">Clear Sky</p>
+        </div>
+
+        <div class="card-details">
+          <div class="detail-item">
+            <span class="label">Humidity</span>
+            <span id="humidity-val" class="value">45%</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Wind Speed</span>
+            <span id="wind-val" class="value">12 km/h</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">High / Low</span>
+            <span id="temp-range" class="value">24° / 17°</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="forecast-section">
+        <h3>3-Day Outlook</h3>
+        <div id="forecast-cards" class="forecast-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>💡 Built with Vanilla JS & Async/Await • Includes Mock Mode Fallback</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

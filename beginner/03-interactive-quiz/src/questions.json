@@ -1,0 +1,37 @@
+[
+  {
+    "category": "JavaScript Fundamentals",
+    "question": "Which of the following methods creates a new array populated with the results of calling a provided function on every element?",
+    "options": ["Array.prototype.forEach()", "Array.prototype.map()", "Array.prototype.filter()", "Array.prototype.reduce()"],
+    "answerIndex": 1,
+    "explanation": ".map() returns a new array containing the transformed elements without mutating the original array."
+  },
+  {
+    "category": "Python Concepts",
+    "question": "In Python, which built-in data type is mutable and ordered?",
+    "options": ["tuple", "set", "list", "frozenset"],
+    "answerIndex": 2,
+    "explanation": "Lists in Python are mutable and preserve insertion order, whereas tuples are immutable and sets are unordered."
+  },
+  {
+    "category": "Git & Version Control",
+    "question": "Which git command is used to download commits, files, and refs from a remote repository into your local repo without merging them?",
+    "options": ["git pull", "git fetch", "git clone", "git push"],
+    "answerIndex": 1,
+    "explanation": "'git fetch' downloads remote changes without automatically merging them into your current branch."
+  },
+  {
+    "category": "Web & HTTP",
+    "question": "Which HTTP response status code signifies that the server successfully processed the request, but is not returning any content?",
+    "options": ["200 OK", "201 Created", "204 No Content", "304 Not Modified"],
+    "answerIndex": 2,
+    "explanation": "204 No Content indicates success with no message body returned."
+  },
+  {
+    "category": "Data Structures",
+    "question": "What is the average time complexity for searching a key in a standard Hash Table?",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+    "answerIndex": 0,
+    "explanation": "Hash table lookups average O(1) constant time with a well-distributed hash function."
+  }
+]

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Quiz | Practice Portfolio</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --success: #22c55e;
+      --error: #ef4444;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .quiz-container {
+      width: 100%;
+      max-width: 580px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    }
+    .quiz-header {
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: #a5b4fc;
+      margin-bottom: 8px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .question-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 16px 0;
+    }
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .option-btn {
+      text-align: left;
+      padding: 14px 18px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+    .option-btn.correct {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: var(--success);
+      color: #86efac;
+    }
+    .option-btn.incorrect {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: var(--error);
+      color: #fca5a5;
+    }
+    .explanation-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .quiz-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .primary-btn {
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .primary-btn:hover { background: var(--primary-hover); }
+    .hidden { display: none !important; }
+    .results-screen { text-align: center; padding: 20px 0; }
+    .score-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.15);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="quiz-screen">
+      <div class="quiz-header">
+        <span id="category-badge" class="badge">Programming Basics</span>
+        <span id="counter" style="float: right; color: var(--text-muted); font-size: 0.85rem;">1 / 5</span>
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <h2 id="question-text" class="question-title">Loading question...</h2>
+      <div id="options-container" class="options-list"></div>
+      <div id="explanation" class="explanation-box hidden"></div>
+
+      <div class="quiz-footer">
+        <span id="score-indicator" style="color: var(--text-muted); font-size: 0.9rem;">Score: 0</span>
+        <button id="next-btn" class="primary-btn hidden">Next Question →</button>
+      </div>
+    </div>
+
+    <div id="results-screen" class="results-screen hidden">
+      <h2>🎉 Quiz Complete!</h2>
+      <p style="color: var(--text-muted); margin-top: 6px;">Here is your final score:</p>
+      <div id="final-score" class="score-circle">0/0</div>
+      <p id="feedback-text" style="margin-bottom: 24px; font-size: 1.05rem;"></p>
+      <button id="restart-btn" class="primary-btn">Try Again</button>
+    </div>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
